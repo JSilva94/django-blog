@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 
 <head>
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <title>Document</title>
+    <title>Blog</title>
 </head>
 
 <body>
@@ -27,22 +28,22 @@
     <nav class="navbar navbar-default techfont custom-navbar">
         <div class="container">
             <ul class="nav navbar-nav">
-
+                    <li>
+                            <a href="{% url 'post_list' %}" class="navbar-brand bigbrand">My blog</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}">About</a>
+                        </li>
+                        <li>
+                            <a href="https://www.github.com">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedIn.com">LinkedIn</a>
+                        </li>
+            
             </ul>
-            <li>
-                <a href="{% url post_list %}" class="navbar-brand bigbrand">My blog</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}">About</a>
-            </li>
-            <li>
-                <a href="https://www.github.com">Github</a>
-            </li>
-            <li>
-                <a href="https://www.linkedIn.com">LinkedIn</a>
-            </li>
-
-            <ul class="nav navbar-right">
+          
+            <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li>
                     <a href="{% url 'post_new' %}">New Post</a>
@@ -71,6 +72,7 @@
             <div class="col-md-8">
                 <div class="blog-posts">
                     {% block content %}
+                    {% endblock %}
                 </div>
             </div>
         </div>
